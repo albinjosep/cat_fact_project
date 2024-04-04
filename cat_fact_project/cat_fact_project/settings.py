@@ -63,16 +63,10 @@ WSGI_APPLICATION = 'cat_fact_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -122,3 +116,4 @@ REDIS_PORT = os.getenv('REDIS_PORT', '6379')
 # Dramatiq settings
 DRAMATIQ_BROKER = 'dramatiq.brokers.redis.RedisBroker'
 DRAMATIQ_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}'
+
